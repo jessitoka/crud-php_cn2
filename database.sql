@@ -1,11 +1,15 @@
-create database test;
+create database crud;
 
-use test;
+use crud;
 
-CREATE TABLE `users` (
+CREATE TABLE `proyectos` (
   `id` int(11) NOT NULL auto_increment,
-  `name` varchar(100) NOT NULL,
-  `age` int(3) NOT NULL,
-  `email` varchar(100) NOT NULL,
+  `titulo_proyecto` varchar(100) NOT NULL,
+  `descripcion` text NOT NULL,
+  `linku` varchar(100) NOT NULL,
+  `fecha_creacion` date NOT NULL,
+  
   PRIMARY KEY  (`id`)
 );
+
+ALTER TABLE proyectos MODIFY id int NOT NULL auto_increment;
