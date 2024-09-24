@@ -1,34 +1,43 @@
+<?php
+include 'dbConnection.php';
+?>
+
 <html>
 <head>
-	<title>Add Data</title>
+    <title>Agregar Proyecto</title>
 </head>
 
 <body>
-	<h2>Add Data</h2>
-	<p>
-		<a href="index.php">Home</a>
-	</p>
+    <h2>Agregar Proyecto</h2>
+    <p>
+        <a href="index.php">Inicio</a>
+    </p>
 
-	<form action="addAction.php" method="post" name="add">
-		<table width="25%" border="0">
+    <form action="addAction.php" method="post" name="add">
+        <table width="25%" border="0">
+            <tr> 
+                <td>Titulo del Proyecto</td>
+                <td><input type="text" name="titulo_proyecto"></td>
+            </tr>
+            <tr> 
+                <td>Descripcion</td>
+                <td><input type="text" name="descripcion"></td>
+            </tr>
+            <tr> 
+                <td>Link</td>
+                <td><input type="text" name="linku"></td>
+            </tr>
 			<tr> 
-				<td>Name</td>
-				<td><input type="text" name="name"></td>
-			</tr>
-			<tr> 
-				<td>Age</td>
-				<td><input type="text" name="age"></td>
-			</tr>
-			<tr> 
-				<td>Email</td>
-				<td><input type="text" name="email"></td>
-			</tr>
-			<tr> 
-				<td></td>
-				<td><input type="submit" name="submit" value="Add"></td>
-			</tr>
-		</table>
-	</form>
+                <td>Fecha de creacion</td>
+                <td><input type="date" name="fecha_creacion"></td>
+            </tr>
+            <tr> 
+                <td></td>
+                <td><input type="submit" name="submit" value="Agregar Proyecto"></td>
+            </tr>
+        </table>
+    </form>
 </body>
 </html>
+
 

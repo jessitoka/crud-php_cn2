@@ -1,8 +1,13 @@
 <?php
 $databaseHost = 'localhost';
-$databaseName = 'test';
+$databaseName = 'crud';
 $databaseUsername = 'root';
-$databasePassword = 'root';
+$databasePassword = '';
 
-// Open a new connection to the MySQL server
-$mysqli = mysqli_connect($databaseHost, $databaseUsername, $databasePassword, $databaseName); 
+$mysqli = mysqli_connect($databaseHost, $databaseUsername, $databasePassword, $databaseName, 3307); 
+
+if (!$mysqli) {
+    die("Error en la conexión: " . mysqli_connect_error());
+}
+mysqli_set_charset($mysqli, "utf8mb4");
+?>
