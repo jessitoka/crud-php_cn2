@@ -1,0 +1,38 @@
+services:
+  # Servicio para PHP + Nginx
+  web:
+    build:
+      context: .  # El Dockerfile está en el directorio actual
+    container_name: php-web
+    ports:
+      - "8080:80"    # Exponemos el puerto 80 del contenedor al puerto 8080 en el host
+    volumes:
+      - .:/var/www/html  # Montamos el código fuente en el contenedor
+    depends_on:
+      - db  # Este servicio depende de que el contenedor de la base de datos esté levantado primero
+    networks:
+      - app-network
+
+  # Servicio para MySQL
+  db:
+    image: mysql:8.0
+    container_name: mysql-db
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword     # Contraseña del usuario root de MySQL
+      MYSQL_DATABASE: mydatabase           # Base de datos por defecto
+      MYSQL_USER: user                     # Usuario de la base de datos
+      MYSQL_PASSWORD: userpassword         # Contraseña para el usuario
+    ports:
+      - "3307:3306"  # Exponemos el puerto 3306 para acceder a MySQL
+    volumes:
+      - db-data:/var/lib/mysql  # Volumen persistente para los datos de la base de datos
+      - ./database.sql:/docker-entrypoint-initdb.d/database.sql  # Ejecutamos el script SQL de inicialización
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  db-data:
